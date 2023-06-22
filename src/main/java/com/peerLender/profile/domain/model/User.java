@@ -1,21 +1,33 @@
 package com.peerLender.profile.domain.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import com.peerLender.profile.domain.model.utili.BaseTime;
+import jakarta.persistence.*;
+
+
+import lombok.*;
+
+import java.util.Date;
+import java.util.List;
 
 
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "users")
+public class User  {
+        @Id
+        @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private  long id;
+    private  String firstName;
+    private  String lastName;
+    private  int age;
+    private  String occupation;
 
-public class User {
 
 
-    private final String firstName;
-    private final String lastName;
-    private final int age;
-    private final String occupation;
 
 
 

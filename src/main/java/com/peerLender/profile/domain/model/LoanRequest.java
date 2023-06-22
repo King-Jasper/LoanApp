@@ -1,18 +1,24 @@
 package com.peerLender.profile.domain.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+
 
 import java.time.Duration;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class LoanRequest {
-    private final int amount;
-    private final User borrower;
-    private final Duration RepaymentTerm;
-    private final double interestRate;
-
-
+    @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private Long id;
+    private  int amount;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id" )
+    private User borrowerId;
+    private int daysToRepay;
+    private  double interestRate;
 }
